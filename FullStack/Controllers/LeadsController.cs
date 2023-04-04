@@ -10,6 +10,7 @@ using FullStack.Models;
 
 namespace FullStack.Controllers
 {
+    [Microsoft.AspNetCore.Authorization.Authorize]
     public class LeadsController : Controller
     {
         private readonly ApplicationDBContext _context;

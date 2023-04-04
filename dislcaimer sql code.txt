@@ -1,0 +1,2 @@
+
+    [Discriminator]        NVARCHAR (MAX)     DEFAULT (N'') NOT NULL,
