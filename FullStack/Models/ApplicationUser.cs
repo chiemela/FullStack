@@ -6,6 +6,6 @@ namespace FullStack.Models
     {
         public string Firstname { get; set; }
         public string Lastname { get; set; }
-        public string phone { get; set; }
+        public string Phone { get; set; }
     }
 }
