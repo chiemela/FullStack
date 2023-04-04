@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace FullStack.Controllers
 {
-    [Microsoft.AspNetCore.Authorization.Authorize]
+    [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin")]
     public class AppRolesController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;

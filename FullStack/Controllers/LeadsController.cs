@@ -10,7 +10,6 @@ using FullStack.Models;
 
 namespace FullStack.Controllers
 {
-    [Microsoft.AspNetCore.Authorization.Authorize]
     public class LeadsController : Controller
     {
         private readonly ApplicationDBContext _context;
@@ -21,6 +20,7 @@ namespace FullStack.Controllers
         }
 
         // GET: Leads
+        [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin,Sales")]   // Both Admin and Sales have access
         public async Task<IActionResult> Index()
         {
               return _context.SalesLead != null ? 
@@ -28,6 +28,7 @@ namespace FullStack.Controllers
                           Problem("Entity set 'ApplicationDBContext.SalesLead'  is null.");
         }
 
+        [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin,Sales")]   // Both Admin and Sales have access
         // GET: Leads/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -46,12 +47,14 @@ namespace FullStack.Controllers
             return View(salesLeadEntity);
         }
 
+        [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin,Sales")]   // Both Admin and Sales have access
         // GET: Leads/Create
         public IActionResult Create()
         {
             return View();
         }
 
+        [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin,Sales")]   // Both Admin and Sales have access
         // POST: Leads/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -68,6 +71,7 @@ namespace FullStack.Controllers
             return View(salesLeadEntity);
         }
 
+        [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin,Sales")]   // Both Admin and Sales have access
         // GET: Leads/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -84,6 +88,7 @@ namespace FullStack.Controllers
             return View(salesLeadEntity);
         }
 
+        [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin,Sales")]   // Both Admin and Sales have access
         // POST: Leads/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -119,6 +124,7 @@ namespace FullStack.Controllers
             return View(salesLeadEntity);
         }
 
+        [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin")]   // Only Admin has access
         // GET: Leads/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -137,6 +143,8 @@ namespace FullStack.Controllers
             return View(salesLeadEntity);
         }
 
+
+        [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin")]   // Only Admin has access
         // POST: Leads/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
